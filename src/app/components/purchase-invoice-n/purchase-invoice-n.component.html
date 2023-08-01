@@ -1,0 +1,55 @@
+
+
+<main id="main" class="main">
+    <div class="pagetitle">
+     <h1>Data Tables</h1>
+     <nav>
+        <ol class="breadcrumb">
+           <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+           <li class="breadcrumb-item">Tables</li>
+           <li class="breadcrumb-item active">Data</li>
+        </ol>
+     </nav>
+    </div>
+    <section class="section">
+     <div class="row">
+        <div class="col-lg-12">
+          
+           <div class="card">
+              <div class="card-body">
+                 <h5 class="card-title">PURCHASE INVOICE INFORMATIONS</h5>
+    <table datatable
+    class="table datatable">
+     <thead>
+       <tr>
+         <th scope="col">Line  Number:</th>
+         <th scope="col"> Purchase Invoice Number</th>
+         <th scope="col">Dossier Number</th>
+         <th scope="col">Invoice Date</th>
+         <th scope="col">Status</th>
+        </tr> 
+    </thead>
+    <tbody   >
+       <tr *ngFor="let purchI of purchaseinvoiced ; let i=index" >
+         <td> {{i+1}} </td>
+        <td> <a href="javascript:void(0)" (click)="showDetails(purchI)"  >
+         {{purchI.purchaseInvoiceNumber}}
+         </a>
+        </td>
+        <td> {{ purchI.dossierNumber }}</td>
+        <td> {{ purchI.invoiceDate | date:'dd/MM/yyyy'}}</td>
+        <td><span class="badge rounded-pill bg-warning">Draft</span></td>
+      </tr>
+       
+     </tbody>
+      
+   </table>
+
+   </div>
+   </div>
+   </div>
+   </div>
+</section>
+  
+  </main>
+   

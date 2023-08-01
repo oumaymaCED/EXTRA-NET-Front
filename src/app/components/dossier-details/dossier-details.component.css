@@ -1,0 +1,30 @@
+
+  
+  /* Style pour les boutons */
+  button {
+    background-color: #2882e1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0069d9;
+  }
+  .form-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-group label {
+    margin-right: 10px;
+  }
+  
+  .form-group input {
+    width: 150px; /* ou la taille que vous souhaitez */
+    height: 30px; /* ou la hauteur que vous souhaitez */
+    margin-left: auto;
+  }
+  

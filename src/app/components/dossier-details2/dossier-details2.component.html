@@ -1,0 +1,345 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+   
+  </div>
+  <section class="section">
+   <div class="row">
+      <div class="col-lg-12">
+         <div class="card">
+            <div class="card-body">
+               <h6 class="card-title"> DOSSIER  DETAILS </h6>
+
+               <form>
+                <fieldset>
+                  <legend>Dossier Information</legend>
+                  <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Dossier Number : </label>
+                    <div class="col-sm-10"> <a href="javascript:void(0)" (click)="showDetails(dossier2)"> 
+                      <input type="text" id="dosCurrentStatusCode" name="dosCurrentStatusCode" value="{{ dossier2.dosDossierNumber }}" disabled>
+                    </a></div>
+                    </div>
+                    <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Dossier Status Name : </label>
+                    <div class="col-sm-10"> 
+                      <input type="text" id="dosCurrentStatusCode" name="dosCurrentStatusCode" value="{{ dossier2.dosStatusLongName }}" disabled>
+                    </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                      <label for="inputText" class="col-sm-2 col-form-label">Intake Date :</label>
+                      <div class="col-sm-10"> 
+                        <input type="text" id="dosIntakeDate" name="dosIntakeDate" value="{{ dossier2.dosIntakeDate| date:'dd/MM/yyyy' }}" disabled>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="inputText" class="col-sm-2 col-form-label">Incident Date :</label>
+                      <div class="col-sm-10"> 
+                        <input type="text" id="dosIncidentDate" name="dosIncidentDate" value="{{ dossier2.dosIncidentDate | date:'dd/MM/yyyy' }}" disabled>
+                      </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                      <label for="inputText" class="col-sm-2 col-form-label">Created Date :</label>
+                      <div class="col-sm-10"> 
+                        <input type="text" id="dosCreatedDate" name="dosCreatedDate" value="{{ dossier2.dosCreatedDate| date:'dd/MM/yyyy' }}" disabled>
+                      </div>
+                    </div>
+
+                   
+                  
+                </fieldset>
+              </form>
+              
+                <table *ngIf="selectedDossier" class="table datatable">
+                  <thead>
+                    <tr>
+                      <th scope="col"> Working Order Number </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let workingOrder of selectedDossier.workingOrder">
+                      <td>  <a href="javascript:void(0)" (click)="showWorkingOrderDetails(workingOrder)">
+                        {{ workingOrder.woWorkingOrderNumber }} </a></td>
+                    </tr>
+                  </tbody>
+                 
+                <table *ngIf="selectedWorkingOrder" class="table datatable">
+                  <thead>
+                    <tr> 
+
+                      <th scope="col">Service Code</th>
+                      <th scope="col">Service Long Name</th>
+                    
+                      <th scope="col">Quantity</th> 
+                      <th scope="col">UnitPrice</th>
+                      <th scope="col">Net Amount</th>
+                      
+                      <th scope="col">TaxRate</th>
+                      <th scope="col">Tax Amount</th>
+                      <th scope="col">Discount</th> 
+
+                      <th scope="col">Gross Amount</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let cost of selectedWorkingOrder.workingorderCosts">
+                      
+                      <td>{{ cost.services.serviceCode }}</td>
+                      <td>{{ cost.services.serviceLongName }}</td>
+                      
+                      <td>{{ cost.quantity | number:'1.2-2'}}</td>
+                      <td>{{ cost.unitPrice| number:'1.2-2' }}</td>
+                      <td>{{ cost.netAmount | number:'1.2-2' }}</td>
+                      <td>{{ cost.taxRate | number:'1.2-2'}}</td>
+
+                      <td>{{ cost.taxAmount | number:'1.2-2'}}</td>
+                      <td>{{cost.discount | number:'1.2-2' }}</td>       
+                      
+
+                      <td>{{ cost.grossAmount| number:'1.2-2' }}</td>
+                      
+                     
+                    </tr>
+                </tbody>              
+             </table>
+            </table>
+                    
+         <button #bt type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ExtralargeModal"> Create  </button>
+
+       <div class="modal fade" id="ExtralargeModal" tabindex="-1">
+      <div class="modal-dialog modal-xl">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title">Purchase Invoice Creation </h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" *ngIf="selectedDossier"> 
+              <section class="section">
+                <div class="row">
+                   <div class="col-lg-6">
+                      <div class="card">
+                         <div class="card-body">
+                            <h2 class="card-title"> <strong> Purchase Invoice </strong> </h2>
+                            <form>
+                              
+                              <div class="class12"> <h5 class = "class123"> <strong> General Information </strong>  </h5></div>
+         
+                             
+                               <div class="row mb-3">
+                                 <label for="inputText" class="col-sm-2 col-form-label text-start">Dossier Number : </label>
+                                 <div class="col-sm-4">
+                                  <input type="text" id="dosnumber" name="dosnumber" value="{{ dossier2.dosDossierNumber }}" disabled >
+                                </div>
+                                <label for="inputText" class="col-sm-2 col-form-label text-start">Purchase Invoice Number : </label>
+                                 <div class="col-sm-4">
+                                  <input type="text" id="PINumber" name="PINumber" [value]="purchaseInvoiced.PIVId"  disabled [(ngModel)]="purchaseInvoiced.PIVId">
+                                 </div>
+
+                                <div class="row mb-3">
+                                  <label class="col-sm-2 col-form-label">woringOrder Number : </label>
+                                  <div class="col-sm-4">
+                                    <select class="form-select" aria-label="Working Order Number" [(ngModel)]="selectedWorkingOrder" (change)="onWorkingOrderChange()" name="selectedWorkingOrder">
+                                      <option *ngFor="let workingOrder of selectedDossier.workingOrder" [ngValue]="workingOrder">{{workingOrder.woWorkingOrderNumber}}</option>
+                                    </select>
+                                    
+                                 </div>
+                               
+                                  <label class="col-sm-2 col-form-label text-start">Invoice Date : </label>
+                                  <div class="col-sm-4">
+                                  <input type="date" class="form-control text-end" [value]="today" >
+                                  </div>
+                               </div>
+                              </div>
+                               
+                              
+                               
+                              &nbsp;  &nbsp;  &nbsp;
+                             
+                              <div> <h5> <strong> Purchase Invoice Lines </strong>  </h5></div>
+         
+                              <table *ngIf="selectedWorkingOrder" class="table datatable">
+                                <thead>
+                                  <tr> 
+                                    <th scope="col">Line Number</th>
+                                    <th scope="col"> Service Name </th>
+                                    <th scope="col"> Quantity</th> 
+                                    <th scope="col"> UnitPrice</th>
+
+                                    <th scope="col"> Net Amount</th>
+                                    <th scope="col"> TaxRate</th>
+
+                                    <th scope="col"> Tax Amount</th>
+                                    <th scope="col"> Discount</th> 
+
+                                    <th scope="col"> Gross Amount</th>
+                                    
+
+                                    <th scope="col"> Action </th>
+
+                                    
+                                  </tr>
+                                </thead>
+                                <tbody > 
+                                  
+                                  <tr *ngFor="let cost of selectedWorkingOrder.workingorderCosts; let i=index" >
+                                    <ng-container  >
+                                     <!--<ng-container *ngIf="!checkServiceTaken(cost.services.serviceID)"> 
+                                      9bal apelle fy west ngIf ;i<=workingordercost.lengh
+                                    
+                                    -->
+ 
+
+                                    <td>{{ i + 1 }}</td>
+                                    <td>{{ cost.services.serviceLongName }} :
+                                       {{ cost.quantity }}</td>
+                                       <!-- <td>
+                                        {{ selectedWorkingOrder.workingorderCosts[i].quantity }}
+                                       </td> -->
+                                       <td>      
+                                        <input  type="number" class="form-control" id="quantity" name="quantity" [value]="cost.quantity" style="text-align: right;" #myInput1 (change)=" ChangeQuantity(myInput1.value , i)" >
+                                      </td>
+                                      <td>
+                                        <input  type="number" class="form-control" id="unitPrice" name="unitPrice" [value]="cost.unitPrice" style="text-align: right;" #myInput2  (change)="ChangeUnitPrice(myInput2.value, i)"  >
+                                      </td>
+                                      <td>
+                                        <input  type="number" class="form-control" id="netAmount" name="netAmount"  [value]="cost.netAmount" style="text-align: right;" #myInput3 (change)="ChangeNetAmount(myInput3.value, i) " disabled  >
+  
+                                      </td>
+                                      <td>
+                                        <input  type="number" class="form-control" id="taxRate" name="taxRate" [value]="cost.taxRate" style="text-align: right;" #myInput4 (change)="ChangetaxRate(myInput4.value, i)"  >
+                                      </td>
+                                      <td>
+                                        <input  type="number" class="form-control" id="taxAmount" name="taxAmount" [value]="cost.taxAmount" style="text-align: right;" #myInput5 (change)="ChangetaxAmount(myInput5.value, i)" disabled >
+                                      </td>
+                                      
+                                      <td>
+                                        <input #discount type="number" class="form-control" id="discount" name="discount" [value]="cost.discount" style="text-align: right;" #myInput6 (input)="Changediscount(myInput6.value, i)">
+                                      </td>
+                                        
+                                      <td>
+                                        <input   type="number"class="form-control" id="grossAmount" name="grossAmount" [value]="cost.grossAmount" style="text-align: right;" #myInput7 (change)="ChangegrossAmount(myInput7.value, i)" disabled >
+                                      </td>
+                                      <td>
+                                        <button type="button" class="btn btn-danger" class="btnn" (click)="deleteCost(i)" >Delete</button> 
+                                      </td>
+                                   
+                                    <!-- <td>      
+                                      <input #quantity type="number" class="form-control" id="quantity" name="quantity" [(ngModel)]="cost.quantity" style="text-align: right;" (change)=" ChangeQuantity(cost.quantity, i)" >
+                                    </td>
+                                    <td>
+                                      <input #unitPrice type="number" class="form-control" id="unitPrice" name="unitPrice" [(ngModel)]="cost.unitPrice" style="text-align: right;"  (change)="ChangeUnitPrice(cost.unitPrice, i)"  >
+                                    </td>
+                                    <td>
+                                      <input #netAmount type="number" class="form-control" id="netAmount" name="netAmount"  [(ngModel)]="cost.netAmount" style="text-align: right;" (change)="ChangeNetAmount(cost.netAmount, i) " disabled  >
+
+                                    </td>
+                                    <td>
+                                      <input #taxRate type="number" class="form-control" id="taxRate" name="taxRate" [(ngModel)]="cost.taxRate" style="text-align: right;" (change)="ChangetaxRate(cost.taxRate, i)"  >
+                                    </td>
+                                    <td>
+                                      <input #taxAmount type="number" class="form-control" id="taxAmount" name="taxAmount" [(ngModel)]="cost.taxAmount" style="text-align: right;" (change)="ChangetaxAmount(cost.taxAmount, i)" disabled >
+                                    </td>
+                                    
+                                    <td>
+                                     <input #discount type="number" class="form-control" id="discount" name="discount" [ngModel]="cost.discount" style="text-align: right;" (input)="Changediscount(discount.value, i)">
+                                    </td>
+                                      
+                    
+                                    <td>
+                                      <input #grossAmount  type="number"class="form-control" id="grossAmount" name="grossAmount" [(ngModel)]="cost.grossAmount" style="text-align: right;" (change)="ChangegrossAmount(cost.grossAmount, i)" disabled >
+                                    </td>
+                                    <td>
+                                      <button type="button" class="btn btn-danger" class="btnn" (click)="deleteCost(i)" >Delete</button> 
+                                    </td> -->
+                                   
+                                  </ng-container>
+  
+                                  </tr>
+                                  
+                                  </tbody>
+                                  </table>
+                                  &nbsp;  &nbsp;  &nbsp;
+                                  <section>
+                                    <div>
+                                      <div *ngIf="selectedWorkingOrder" class="row mb-3">
+                                        <label for="inputText" class="col-sm-2 col-form-label text-start">Total GrossAmount</label>
+                                        <div class="col-sm-3">
+                                          <input type="number" class="form-control" id="totalgrossAmount" [value]="totalGrossAmount" disabled>
+                                        </div>
+                                        <label for="inputText" class="col-sm-2 col-form-label text-start">Total TaxAmount</label>
+                                        <div class="col-sm-3">
+                                          <input type="number" class="form-control" id="totaltaxamount" [value]="totalTaxAmount" disabled>
+                                        </div>
+                                      </div>  
+                                      <div *ngIf="selectedWorkingOrder" class="row mb-3">
+                                        <label for="inputText" class="col-sm-2 col-form-label text-start">Total NetAmount</label>
+                                        <div class="col-sm-3">
+                                          <input type="number" class="form-control" id="totalNetAmount" [value]="totalNetAmount" disabled>
+                                        </div>
+                                        <label for="inputText" class="col-sm-2 col-form-label text-start">Total Discount</label>
+                                        <div class="col-sm-3">
+                                          <input type="number" class="form-control" id="totaldiscount" [value]="totalDiscount" disabled>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </section>
+                                  
+                  
+                            </form>
+                         </div>
+                      </div>       
+                   </div>
+                   
+                </div>
+             </section>
+
+
+
+            </div>
+            <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" (click)="onSendData()">Send</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="spacer"></div>
+  <h5 class="card-title">PURCHASE INVOICE INFORMATIONS <button #monBouton class="btn1" class="btn btn-dark" ><i class="bi bi-folder"></i></button> </h5>
+   <table datatable
+   class="table datatable">
+    <thead>
+      <tr>
+        <th scope="col">Line  Number:</th>
+        <th scope="col">Dossier Number</th>
+        <th scope="col">Invoice Date</th>
+        <th scope="col">Status</th>
+       </tr> 
+   </thead>
+   <tbody   >
+    <tr *ngFor="let purchI of purchaseinvoiceByIdDossier ; let i=index" >
+      <td> <a href="javascript:void(0)">
+       <span hidden>{{purchI.purchaseInvoiceNumber}}</span>
+       {{i+1}}  
+      </a>
+      </td>
+      <td> {{ purchI.dossierNumber }}</td>
+      <td> {{ purchI.invoiceDate | date:'dd/MM/yyyy'}}</td>
+      <td><span class="badge rounded-pill bg-warning">Draft</span></td>
+     </tr>
+   </tbody>
+     
+  </table>
+
+ 
+               
+              
+              </div>
+          </div>
+      </div>
+  </div>
+
+</section>
+
+</main>
+
+
+

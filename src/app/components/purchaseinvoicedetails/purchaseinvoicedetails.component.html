@@ -1,0 +1,276 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+     
+    </div>
+    <section class="section">
+     <div class="row">
+        <div class="col-lg-12">
+           <div class="card">
+              <div class="card-body">
+                 <h6 class="card-title"> PURCHASEINVOICE  DETAILS </h6>
+  
+                 <form>
+                  <fieldset>
+                    <legend>PurchaseInvoice Information</legend>
+                    <div class="row mb-3">
+                      <label for="inputText" class="col-sm-2 col-form-label">status:</label>
+                      <div class="col-sm-10"> 
+                        <span class="badge rounded-pill bg-warning">Draft</span>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="inputText" class="col-sm-2 col-form-label">PurchaseInvoice ID : </label>
+                      <div class="col-sm-10">  <a href="javascript:void(0)" (click)="showDetails(purchaseinvoice1)">
+                        <input type="text" id="dosCurrentStatusCode" name="dosCurrentStatusCode" value="{{ purchaseinvoice1.PurchaseInvoiceNumber }}" disabled>
+                       
+                      </a></div>
+                      </div>
+                     
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label">Dossier Number : </label>
+                        <div class="col-sm-10"> 
+                          <input type="text" id="dosCurrentStatusCode" name="dosCurrentStatusCode" value="{{ purchaseinvoice1.DossierNumber }}" disabled>
+                        </div>
+                      </div>
+                   
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label">Invoice Date :</label>
+                        <div class="col-sm-10"> 
+                          <input type="text" id="dosIncidentDate" name="dosIncidentDate" value="{{ purchaseinvoice1.InvoiceDate | date:'dd/MM/yyyy' }}" disabled>
+                        </div>
+                      </div>
+                      
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label">TotalNetAmount :</label>
+                        <div class="col-sm-10"> 
+                          <input type="text" id="dosIncidentDate" name="dosIncidentDate" value="{{ purchaseinvoice1.TotalNetAmount }}" disabled>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label"> TotalgrossAmount :</label>
+                        <div class="col-sm-10"> 
+                          <input type="text" id="dosIncidentDate" name="dosIncidentDate" value="{{ purchaseinvoice1.TotalGrossAmount }}" disabled>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label"> Totaltaxamount :</label>
+                        <div class="col-sm-10"> 
+                          <input type="text" id="dosIncidentDate" name="dosIncidentDate" value="{{ purchaseinvoice1.TotalTaxAmount  }}" disabled>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label"> Totaldiscount :</label>
+                        <div class="col-sm-10"> 
+                          <input type="text" id="dosIncidentDate" name="dosIncidentDate" value="{{ purchaseinvoice1.TotalDiscount  }}" disabled>
+                        </div>
+                      </div>
+                      
+                      </fieldset>
+
+
+                      </form>
+                     
+                       
+                      <table *ngIf="selectedPurchaseInvoice" class="table datatable">
+                        <thead>
+                          <tr> 
+                            <th scope="col">WorkingOrder Number</th>
+                            <th scope="col">Quantity</th> 
+                            <th scope="col">UnitPrice</th>
+                            <th scope="col">Net Amount</th>
+                            <th scope="col">TaxRate</th>
+                            <th scope="col">Tax Amount</th>
+                            <th scope="col">Discount</th> 
+                            <th scope="col">Gross Amount</th>
+
+                            <th scope="col"> Service ID</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let line of purchaseinvoice1.PurchaseInvoiceLines ">
+                            <td>{{line.WorkingOrdernumber}}</td>
+                            <td>{{ line.Quantity | number:'1.2-2'}}</td>
+                            <td>{{ line.UnitPrice| number:'1.2-2' }}</td>
+
+                            <td>{{ line.NetAmount | number:'1.2-2' }}</td>
+                            <td>{{ line.TaxRate | number:'1.2-2'}}</td>
+                          
+
+                            <td>{{ line.TaxAmount | number:'1.2-2'}}</td>
+                            <td>{{ line.Discount | number:'1.2-2'}}</td>
+
+                            <td>{{ line.GrossAmount| number:'1.2-2' }}</td>
+                            <td>{{line.ServiceID}}</td>
+
+
+                          </tr>
+                        </tbody>
+                      </table>
+                      
+                      
+                      
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ExtralargeModal"> Update</button>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" class="btnnn" (click)="sendPurchaseInvoice()"> Send</button>
+
+                  
+                      <div class="modal fade" id="ExtralargeModal" tabindex="-1">
+                     <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h5 class="modal-title">Purchase Invoice Updating </h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           </div>
+                           <div class="modal-body" *ngIf="selectedPurchaseInvoice"> 
+                             <section class="section">
+                               <div class="row">
+                                  <div class="col-lg-6">
+                                     <div class="card">
+                                        <div class="card-body">
+                                           <h2 class="card-title"> <strong> Purchase Invoice </strong> </h2>
+                                           <form>
+                                             
+                                             <div class="class12"> <h5 class = "class123"> <strong> General Information </strong>  </h5></div>
+                                             <section  >
+                                              <div >
+                                                <div *ngIf="selectedPurchaseInvoice" class="row mb-3">
+
+                                                  <label for="inputText" class="col-sm-2 col-form-label text-start">Total GrossAmount </label>
+                                                  <div class="col-sm-3">
+                                                    <input type="number" class="form-control" id="totalgrossAmount" [value]="purchaseinvoice1.TotalGrossAmount" #myInput7 (change)=" calculateTotals()" disabled>
+
+                                                  </div>
+                                                  <label for="inputText" class="col-sm-2 col-form-label text-start">Total TaxAmount</label>
+                                                  <div class="col-sm-3">
+                                                    <input type="number" class="form-control" id="totaltaxamount" [value]="purchaseinvoice1.TotalTaxAmount" #myInput8 (change)=" calculateTotals()" disabled>
+                                                  </div>
+                                                </div>  
+                                                <div class="row mb-3">
+                                                  <label for="inputText" class="col-sm-2 col-form-label text-start">Total NetAmount</label>
+                                                  <div class="col-sm-3">
+                                                    <input type="number" class="form-control" id="totalNetAmount" [value]="purchaseinvoice1.TotalNetAmount" #myInput9 (change)=" calculateTotals()" disabled>
+                                                  </div>
+             
+                                                  <label for="inputText" class="col-sm-2 col-form-label text-start">Total Discount</label>
+                                                  <div class="col-sm-3">
+                                                    <input type="number" class="form-control" id="totaldiscount" [value]="purchaseinvoice1.TotalDiscount" #myInput10 (change)=" calculateTotals()" disabled>
+                                                  </div>
+                                                </div>
+                                            
+                                              </div>
+                                            </section>
+                                              
+                                            
+                                              
+                                             &nbsp;  &nbsp;  &nbsp;
+                                            
+                                             <div> <h5> <strong> Purchase Invoice Lines </strong>  </h5></div>
+                        
+                                             <table *ngIf="selectedPurchaseInvoice" class="table datatable">
+                                               <thead>
+                                                 <tr> 
+                                                  <th> line number </th>
+
+                                                  <th scope="col"> Quantity</th> 
+                                                  <th scope="col"> UnitPrice</th>
+
+                                                   <th scope="col"> Net Amount</th>
+                                                   <th scope="col"> TaxRate</th>
+
+                                                   <th scope="col"> Tax Amount</th>
+                                                   <th scope="col"> Discount</th> 
+
+                                                   <th scope="col"> Gross Amount</th>
+                                                   <th scope="col"> WorkingOrder Number</th>
+                                                   <th scope="col"> Service ID</th>
+                                                   <th scope="col">  Action </th>
+                                                   
+                                                 </tr>
+                                               </thead>
+                                               <tbody>
+                                                <tr *ngFor="let line of purchaseinvoice1.PurchaseInvoiceLines ; let i=index ">
+
+                                                 <td> 
+                                                  {{i+1}}   
+                                                  <span hidden >{{line.PurchaseInvoiceLineId}}</span>
+                                                 </td>
+                                                 
+                                                   <td>      
+                                                    <input  type="number" class="form-control" id="quantity" name="quantity" [value]="line.Quantity" style="text-align: right;"  #myInput1 (change)=" ChangeQuantity(myInput1.value, i)" >
+
+                                                  </td>
+                                                  <td>
+                                                    <input  type="number" class="form-control" id="unitPrice" name="unitPrice" [value]="line.UnitPrice" style="text-align: right;" #myInput2  (change)="ChangeUnitPrice(myInput2.value, i)"  >
+                                                  </td>
+                                                  <td>
+                                                    <input  type="number" class="form-control" id="netAmount" name="netAmount"  [value]="line.NetAmount" style="text-align: right;" #myInput3 (change)="ChangeNetAmount(myInput3.value, i) " disabled  >
+              
+                                                  </td>
+                                                  <td>
+                                                    <input  type="number" class="form-control" id="taxRate" name="taxRate" [value]="line.TaxRate" style="text-align: right;" #myInput4 (change)="ChangetaxRate(myInput4.value, i)"  >
+                                                  </td>
+                                                  <td>
+                                                    <input  type="number" class="form-control" id="taxAmount" name="taxAmount" [value]="line.TaxAmount" style="text-align: right;" #myInput5 (change)="ChangetaxAmount(myInput5.value, i)" disabled >
+                                                  </td>
+                                                  
+                                                  <td>
+                                                    <input #discount type="number" class="form-control" id="discount" name="discount" [value]="line.Discount" style="text-align: right;" #myInput6 (input)="Changediscount(myInput6.value, i)">
+                                                  </td> 
+                                                    
+                                                  <td>
+                                                    <input   type="number"class="form-control" id="grossAmount" name="grossAmount" [value]="line.GrossAmount" style="text-align: right;" #myInput7 (change)="ChangegrossAmount(myInput7.value, i)" disabled >
+                                                  </td>
+                                                  <td> 
+                                                    <input   type="text"class="form-control" id="workingOrdernumber" name="workingOrdernumber" [value]="line.WorkingOrdernumber" style="text-align: right;"  disabled >
+                                                  </td>
+                                                  <td>
+                                                    <input   type="text" class="form-control" id="ServiceID" name="ServiceID" [value]="line.ServiceID" style="text-align: right;" disabled >
+                                                  </td>
+                                                  
+                                                  <td>
+                                                    <button type="button" class="btn btn-danger" class="btnn" (click)="deleteCost(i)" >Delete</button> 
+
+                                                  </td>
+
+                                                     <!--
+                                                      end new 
+                                                     -->
+                                                 </tr>
+                                                 </tbody>
+                                                 </table>
+                                                 &nbsp;  &nbsp;  &nbsp;
+                                           
+                                             
+                                             
+                                             
+                                           </form>
+                                        </div>
+                                     </div>       
+                                  </div>
+                                  
+                               </div>
+                            </section>
+               
+               
+               
+                           </div>
+                           <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" (click)="onSendDataUpdated()" >Confirm</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+
+
+
+
+
+                    
+                
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>

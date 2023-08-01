@@ -1,0 +1,131 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1></h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+             <li class="breadcrumb-item">Forms</li>
+             <li class="breadcrumb-item active">Layouts</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-6">
+             <div class="card">
+                <div class="card-body">
+                   <h2 class="card-title"> <strong> Purchase Invoice</strong> </h2>
+                   <form>
+                     
+                     <div class="class12"> <h5 class = "class123"> <strong> General Information </strong>  </h5></div>
+
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label text-start">Id Purchase Invoice</label>
+                        <div class="col-sm-10 text-end">
+                          <input type="text" class="form-control"  value="Id Purchase Invoice" disabled >
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label text-start">Dossier Number</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="DossierNumber" >
+                        </div>
+                        <label for="inputText" class="col-sm-2 col-form-label text-start">WorkingOrder number</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="WorkingOrdernumber">
+                        </div>
+                      </div>
+                      
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label text-start">Purchase Invoice Number</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="PINumber">
+                        </div>
+                        <label class="col-sm-2 col-form-label text-start">Invoice Date</label>
+                        <div class="col-sm-4">
+                          <input type="date" class="form-control text-end">
+                        </div>
+                      </div>
+                      
+                      
+                     &nbsp;  &nbsp;  &nbsp;
+                    
+                     <div class="class12"> <h5 class = "class123"> <strong> Purchase Invoice Lines </strong>  </h5></div>
+
+                     <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th> service Code</th>
+                            <th>Gross Amount</th>
+                            <th>Tax Amount</th>
+                            <th>Net Amount</th>
+                            <th>Discount</th>
+                            <th>Quantity</th>
+                            <th>TaxRate</th>
+                            <th>UnitPrice</th>
+                           
+                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><input type="text" class="form-control" value="2.00"></td>
+                            <td><input type="text" class="form-control" value="0.00"></td>
+                            <td><input type="text" class="form-control" value="0.00"></td>
+                            <td><input type="text" class="form-control" value="0.00"></td>
+                            <td><input type="text" class="form-control" value="2.00"></td>
+                            <td><input type="text" class="form-control" value="0.00"></td>
+                            <td><input type="text" class="form-control" value="0.00"></td>
+                            <td><input type="text" class="form-control" value="2.00"></td>
+                          </tr>
+                          <tr>
+                            <td><input type="text" class="form-control" value="4.00"></td>
+                            <td><input type="text" class="form-control" value="0.00"></td>
+                            <td><input type="text" class="form-control" value="0.00"></td>
+                            <td><input type="text" class="form-control" value="0.00"></td>
+                            <td><input type="text" class="form-control" value="2.00"></td>
+                            <td><input type="text" class="form-control" value="0.00"></td>
+                            <td><input type="text" class="form-control" value="0.00"></td>
+                            <td><input type="text" class="form-control" value="2.00"></td>
+                           
+                          </tr>
+                        </tbody>
+                      </table>
+                      
+                      <section>
+                        <div>
+                          <div class="row mb-3">
+                            <label for="inputText" class="col-sm-2 col-form-label text-start">Total GrossAmount </label>
+                            <div class="col-sm-4">
+                              <input type="text" class="form-control" id="DossierNumber">
+                            </div>
+                            <label for="inputText" class="col-sm-2 col-form-label text-start">Total TaxAmount</label>
+                            <div class="col-sm-4">
+                              <input type="text" class="form-control" id="WorkingOrdernumber">
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <label for="inputText" class="col-sm-2 col-form-label text-start">Total NetAmount</label>
+                            <div class="col-sm-4">
+                              <input type="text" class="form-control" id="DossierNumber">
+                            </div>
+                            <label for="inputText" class="col-sm-2 col-form-label text-start">Total Discount</label>
+                            <div class="col-sm-4">
+                              <input type="text" class="form-control" id="WorkingOrdernumber">
+                            </div>
+                          </div>
+                      
+                        </div>
+                      </section>
+                     
+                     
+                     
+                  <div><button type="submit" class="btn btn-primary">Submit</button><button type="reset">Reset</button></div>
+                   </form>
+                </div>
+             </div>       
+          </div>
+          
+       </div>
+    </section>
+ </main>

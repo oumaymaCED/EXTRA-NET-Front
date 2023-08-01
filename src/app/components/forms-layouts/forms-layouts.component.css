@@ -1,0 +1,124 @@
+.card-body .btn{margin-right: 5px;}
+.card-body {
+    width: 1000px;
+    height: 1200px;
+  }
+.card {
+  width: 1100px;
+  height: 850px;
+
+}
+
+/* Center the page title */
+.pagetitle {
+    text-align: center;
+  }
+  
+  /* Style the breadcrumb links */
+  .breadcrumb-item a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  .breadcrumb-item.active {
+    color: #6c757d;
+  }
+  
+  /* Style the form */
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: none;
+  }
+  
+  /* Style the form button */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  /* Style the form button when hovered */
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  
+  /* Style the form button when active */
+  .btn-primary:active {
+    background-color: #0062cc;
+    border-color: #005cbf;
+  }
+  
+  /* Style the form button when focused */
+  .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Style the form reset button */
+  .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
+  /* Style the form reset button when hovered */
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  
+  /* Style the form reset button when active */
+  .btn-secondary:active {
+    background-color: #545b62;
+    border-color: #4e555b;
+  }
+  
+  /* Style the form reset button when focused */
+  .btn-secondary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+  }
+  .class12{
+    color: crimson;
+    text-emphasis-color:rgb(229, 7, 52) ;
+
+  }
+  
+    
+  
+  
+  /* Style pour le tableau */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Style pour les cellules du tableau */
+.table td,
+.table th {
+  padding: 8px;
+  border: 1px solid #f0d5d5;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* Style pour l'en-tête du tableau */
+.table thead th {
+  background-color: #f9eded;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Style pour les lignes impaires du tableau */
+.table tbody tr:nth-child(odd) {
+  background-color: #ceefcd;
+}
+
+/* Style pour les liens du tableau */
+.table a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+/* Style pour les liens survolés du tableau */
+.table a:hover {
+  color: #23527c;
+  text-decoration: underline;
+}
+

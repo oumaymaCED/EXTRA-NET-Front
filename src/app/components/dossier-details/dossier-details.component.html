@@ -1,0 +1,101 @@
+
+
+<main id="main" class="main">
+  <div class="pagetitle">
+   <h1>Data Tables</h1>
+   <nav>
+      <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+         <li class="breadcrumb-item">Tables</li>
+         <li class="breadcrumb-item active">Data</li>
+      </ol>
+   </nav>
+  </div>
+  <section class="section">
+   <div class="row">
+      <div class="col-lg-12">
+        
+         <div class="card">
+            <div class="card-body">
+               <h5 class="card-title">DOSSIER INFORMATIONS</h5>
+  <table datatable
+  class="table datatable">
+   <thead>
+     <tr>
+       <th scope="col">Dossier Number</th>
+       <th scope="col">Current Status</th>
+       <th scope="col">Intake Date</th>
+       <th scope="col">Incident Date</th>
+       <th scope="col">Created Date</th>
+      
+     </tr> 
+   </thead>
+   <tbody>
+     <tr *ngFor="let dossier of sortedDossiers" >
+       <td >   <a href="javascript:void(0)" (click)="showDetails(dossier)" >
+     {{ dossier.dosDossierNumber }}</a></td>
+       <td >{{ dossier.dosStatusLongName }}</td>
+       <td >{{ dossier.dosIntakeDate | date:'dd/MM/yyyy'  }}</td>
+       <td >{{ dossier.dosIncidentDate | date:'dd/MM/yyyy' }}</td>
+       <td >{{ dossier.dosCreatedDate | date:'dd/MM/yyyy' }}</td>
+       
+     </tr>
+   </tbody>
+ </table>
+
+ <table *ngIf="selectedDossier" class="table datatable" >
+   <thead>
+     <tr>
+       <th scope="col">Working Order Number</th>
+       
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let workingOrder of selectedDossier.workingOrder">
+       <td>  <a href="javascript:void(0)" (click)="showWorkingOrderDetails(workingOrder)">
+         {{ workingOrder.woWorkingOrderNumber }} </a></td>
+     </tr>
+   </tbody>
+ </table>
+ 
+ <table *ngIf="selectedWorkingOrder" class="table datatable">
+   <thead>
+     <tr> 
+       <th scope="col">Working Order Cost ID</th>
+       <th scope="col">Net Amount</th>
+       <th scope="col">Tax Amount</th>
+       <th scope="col">Gross Amount</th>
+       <th scope="col">Discount</th>
+       <th scope="col">Service ID</th>
+       <th scope="col">Service Code</th>
+       <th scope="col">Service Short Name</th>
+       <th scope="col">Service Long Name</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let cost of selectedWorkingOrder.workingorderCosts">
+       <td>{{ cost.idworkingOrder }}</td>
+       <td>{{ cost.netAmount }}</td>
+       <td>{{ cost.taxAmount }}</td>
+       <td>{{ cost.grossAmount }}</td>
+       <td>{{ cost.discount }}</td>
+       <td>{{ cost.services.serviceID }}</td>
+       <td>{{ cost.services.serviceCode }}</td>
+       <td>{{ cost.services.serviceShortName }}</td>
+       <td>{{ cost.services.serviceLongName }}</td>
+     </tr>
+   </tbody>
+ </table>
+ 
+ <button *ngIf="selectedDossier" (click)="hideDetails()">Hide Details</button> 
+ &nbsp;&nbsp;&nbsp;
+ <button *ngIf="selectedDossier" (click)="selectDossier(dossier)" [routerLink]="['/FormulairePurchaseInvoice']"> Create Purshace Invoice </button>
+ 
+  </div>
+ </div>
+ </div>
+</div>
+</section>
+
+</main>
+ 

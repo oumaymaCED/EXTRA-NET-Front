@@ -1,0 +1,31 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1>  Dossiers </h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item">Components</li>
+            <li class="breadcrumb-item active">Cards</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section">
+      <div class="row align-items-top">
+         <div class="col-md-6" *ngFor="let dossier of dossiers">
+           <div class="card" (click)="afficherDetails(dossier)" [routerLink]="['/dossiers']">
+               <div class="row g-0">
+                  <div class="col-md-4"> <img src="assets/img/ddd.jpg" class="img-fluid rounded-start" alt="..."></div>
+                  <div class="col-md-8">
+                     <div class="card-body">
+                       
+              
+                    </div>   
+                  </div>
+                </div>
+                   <h3> Dossier Number : {{ dossier.dosDossierNumber }}</h3>
+                   <p> Dossier Created Date : {{ dossier.dosCreatedDate | date:'dd/MM/yyyy'}}</p>
+            </div>
+         </div>
+       </div>
+   </section>
+</main>

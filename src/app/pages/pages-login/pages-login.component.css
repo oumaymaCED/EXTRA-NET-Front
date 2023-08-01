@@ -1,0 +1,15 @@
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000%;
+    height: 1000%;
+  }
+  
+  .img-container img {
+    width: 700px; /* Ajustez la taille selon vos besoins */
+    height: auto;
+    border-radius: 50%; /* Ajoute une bordure arrondie à l'image */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajoute une ombre à l'image */
+  }
+  

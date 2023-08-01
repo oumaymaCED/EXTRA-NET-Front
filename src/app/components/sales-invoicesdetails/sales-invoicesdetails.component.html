@@ -1,0 +1,114 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+     
+    </div>
+    <section class="section">
+     <div class="row">
+        <div class="col-lg-12">
+           <div class="card">
+              <div class="card-body">
+                 <h6 class="card-title"> SALE INVOICE  DETAILS </h6>
+  
+                 <form>
+                  <fieldset>
+                    <legend>Sale Invoice Informations</legend>
+                    <div class="row mb-3">
+                      <label for="inputText" class="col-sm-2 col-form-label">status:</label>
+                      <div class="col-sm-10"> 
+                        <span class="badge rounded-pill bg-danger">{{saleinvoice1.statusName }}</span>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                        
+                      <label for="inputText" class="col-sm-2 col-form-label">Sale Invoice Number : </label>
+                      <div class="col-sm-10"> 
+                        <a href="javascript:void(0)" (click)="showDetails(saleinvoice1)">
+                        <input type="text" id="dosCurrentStatusCode" name="dosCurrentStatusCode" value="{{ saleinvoice1.salesNumber}}" disabled>
+                    </a>
+                     </div>
+                      </div>
+                     
+                      
+                   
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label"> Sale Invoice Date :</label>
+                        <div class="col-sm-10"> 
+                          <input type="text" id="dosIncidentDate" name="dosIncidentDate" value="{{ saleinvoice1.salesIDate | date:'dd/MM/yyyy' }}" disabled>
+                        </div>
+                      </div>
+                      
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label">Total GrossAmount :</label>
+                        <div class="col-sm-10"> 
+                          <input type="text" id="dosIncidentDate" name="dosIncidentDate" value="{{ saleinvoice1.salesTotalGrossAmount }}" disabled>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label"> Total taxAmount :</label>
+                        <div class="col-sm-10"> 
+                          <input type="text" id="dosIncidentDate" name="dosIncidentDate" value="{{ saleinvoice1.salesTotalTaxAmount }}" disabled>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label"> Total Netamount :</label>
+                        <div class="col-sm-10"> 
+                          <input type="text" id="dosIncidentDate" name="dosIncidentDate" value="{{ saleinvoice1.salesTotalNetAmount  }}" disabled>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label"> Dossier Number :</label>
+                        <div class="col-sm-10"> 
+                          <input type="text" id="dosIncidentDate" name="dosIncidentDate" value="{{ saleinvoice1.salesDossierNumber  }}" disabled>
+                        </div>
+                      </div>
+                      
+                      </fieldset>
+
+
+                      </form>
+                     
+                       
+                      <table *ngIf="selectedsaleInvoice" class="table datatable">
+                        <thead>
+                          <tr> 
+                            <th scope="col">Line Number</th>
+                            <th scope="col">UnitPrice</th>
+                            <th scope="col">Quantity</th>
+
+                            <th scope="col">Net Amount</th>
+                            <th scope="col">TaxRate</th>
+                            <th scope="col">Tax Amount</th>
+                            <th scope="col">Discount</th> 
+                            <th scope="col">Gross Amount</th>
+
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let line of selectedsaleInvoice.salesInvoiceLines ; let i=index ">
+                            <td>{{i+1}}</td>
+                            <td>{{ line.unitPriceLine| number:'1.2-2' }}</td>
+                            <td>{{ line.quantityLine| number:'1.2-2' }}</td>
+
+
+                            <td>{{ line.netAmountLine | number:'1.2-2' }}</td>
+                            <td>{{ line.taxRateLine | number:'1.2-2'}}</td>
+                          
+
+                            <td>{{ line.taxAmountLine | number:'1.2-2'}}</td>
+                            <td>{{ line.discountLine | number:'1.2-2'}}</td>
+
+                            <td>{{ line.grossAmountLine| number:'1.2-2' }}</td>
+
+
+                          </tr>
+                        </tbody>
+                      </table>
+                      
+                    
+                    </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
